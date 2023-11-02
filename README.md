@@ -16,4 +16,4 @@ Sovelluksesta löytyy eri bändejä, joista jokaisesta voi lukea tietopaketin. B
 
 - Etusivulta voi hakea bändiä nimeltä.
 
-(- Etusivulle mahdollinen aakoslista bändeistä?)
+- Etusivulle mahdollinen aakoslista bändeistä? Vai bändit suoraan aakkosjärjestykseen? (mietinnässä vielä)
