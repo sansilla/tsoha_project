@@ -1,2 +1,8 @@
 CREATE TABLE users (id SERIAL PRIMARY KEY, name TEXT, password TEXT, role INTEGER);
 
+CREATE TABLE bands (id SERIAL PRIMARY KEY, name TEXT);
+
+CREATE TABLE reviews (id SERIAL PRIMARY KEY, user_id INTEGER REFERENCES users, band_id INTEGER REFERENCES bands, comment TEXT);
+
+CREATE TABLE info (id SERIAL PRIMARY KEY, band_id INTEGER REFERENCES bands, info_text TEXT);
+
