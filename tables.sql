@@ -6,3 +6,5 @@ CREATE TABLE reviews (id SERIAL PRIMARY KEY, user_id INTEGER REFERENCES users, b
 
 CREATE TABLE info (id SERIAL PRIMARY KEY, band_id INTEGER REFERENCES bands, info_text TEXT);
 
+CREATE TABLE favourites (id SERIAL PRIMARY KEY, user_id INTEGER REFERENCES users, band_id INTEGER REFERENCES bands);
+
