@@ -1,14 +1,13 @@
-#Vasta testailua!
 from flask import Flask
 from flask import redirect, render_template, request
-from flask_sqlalchemy import SQLAlchemy
+#from flask_sqlalchemy import SQLAlchemy SIIRRETTY DATABASEEN
 from sqlalchemy.sql import text
-from os import getenv
+#from os import getenv SIIRRETTY DATABASEEN
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = getenv("DATABASE_URL")
-#app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql:///sansilla"
-db = SQLAlchemy(app)
+#app.config["SQLALCHEMY_DATABASE_URI"] = getenv("DATABASE_URL") SIIRRETTY DATABASEEN
+#app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql:///sansilla" EI VARMAAN TARVITA ENÄÄ?
+#db = SQLAlchemy(app) SIIRRETTY DATABASEEN
 
 @app.route("/")
 def index():
