@@ -6,6 +6,6 @@ import bands
 
 @app.route("/")
 def index():
-	result = db.session.execute(text("SELECT name FROM bands"))
-	bands = result.fetchall()
-	return render_template("index.html", bands=bands)
+	#result = db.session.execute(text("SELECT name FROM bands"))
+	#bands = result.fetchall()
+	return render_template("index.html", bands=bands.show_all_bands())
