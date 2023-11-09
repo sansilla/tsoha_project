@@ -1,4 +1,6 @@
 {% for band in bands %}
-{{ band.name }}
+{{ band.name }} <br>
+<a href="/band_info/{{ band.id }}">Näytä info</a> /
+<a href="/reviews/{{ band.id }}">Arvostelut</a> <br>
 <hr>
 {% endfor %}
