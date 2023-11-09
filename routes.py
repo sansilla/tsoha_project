@@ -1,6 +1,7 @@
 from app import app
 from sqlalchemy.sql import text
 from flask import redirect, render_template, request
+from database import db
 
 @app.route("/")
 def index():
