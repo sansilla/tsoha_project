@@ -1,8 +1,8 @@
 from flask import Flask
-from flask import redirect, render_template, request
+from flask import redirect, render_template, request #tulee siirtymään
 #from flask_sqlalchemy import SQLAlchemy SIIRRETTY DATABASEEN
-from sqlalchemy.sql import text
-#from os import getenv SIIRRETTY DATABASEEN
+from sqlalchemy.sql import text #tulee siirtymään
+from os import getenv
 
 app = Flask(__name__)
 #app.config["SQLALCHEMY_DATABASE_URI"] = getenv("DATABASE_URL") SIIRRETTY DATABASEEN
