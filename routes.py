@@ -10,7 +10,8 @@ def index():
 	#bands = result.fetchall()
 	return render_template("index.html", bands=bands.show_all_bands())
 
-@app.route("/band_info/<int:band_id>")
-def show_info(band_id):
+@app.route("/band_info/<string:band_name>")
+def show_info(band_name):
 	#info = bands.show_band_info(band_id)
-	return render_template("band.html", info=bands.show_band_info(band_id))
+	return render_template("band.html", info=bands.show_band_info(band_name))
+
