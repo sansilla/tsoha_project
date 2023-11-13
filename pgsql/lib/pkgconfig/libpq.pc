@@ -1,0 +1,9 @@
+Name: libpq
+Description: PostgreSQL libpq library
+Url: http://www.postgresql.org/
+Version: 12.15
+Requires: 
+Requires.private: 
+Cflags: -I/home/sansilla/pgsql/include
+Libs: -L/home/sansilla/pgsql/lib -lpq
+Libs.private:  -lpgcommon -lpgport -lssl -lcrypto -lcrypt -lm

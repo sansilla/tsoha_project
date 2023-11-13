@@ -1,0 +1,4 @@
+export LD_LIBRARY_PATH=/home/sansilla/pgsql/lib
+export PATH=/home/sansilla/pgsql/bin:$PATH
+export PGHOST=/home/sansilla/pgsql/sock
+export PGDATA=/home/sansilla/pgsql/data

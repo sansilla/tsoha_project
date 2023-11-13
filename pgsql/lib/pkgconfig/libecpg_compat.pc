@@ -1,0 +1,9 @@
+Name: libecpg_compat
+Description: PostgreSQL libecpg_compat library
+Url: http://www.postgresql.org/
+Version: 12.15
+Requires: 
+Requires.private: libecpg libpgtypes
+Cflags: -I/home/sansilla/pgsql/include
+Libs: -L/home/sansilla/pgsql/lib -lecpg_compat
+Libs.private:  -lpgcommon -lpgport -lpq -lm
