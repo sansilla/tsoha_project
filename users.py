@@ -16,5 +16,10 @@ def register(name, password, role):
 def login(name, password):
 	sql = "SELECT id, password, role FROM users WHERE name=:name"
 	returning = db.session.execute(sql, {"name":name})
+	user = returning.fetchone()
+	if not user:
+		return False
+	if not check_password_hash(jotain tänne???):
+		return False
 	#JATKA TÄTÄ MYÖHEMMIN
 
