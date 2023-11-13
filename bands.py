@@ -6,5 +6,5 @@ def show_all_bands():
 	return db.session.execute(text(sql)).fetchall()
 
 def show_band_info(band_name):
-	sql = "SELECT bands.name, info.info_text FROM bands, info WHERE bands.name=info.band_name"
+	sql = "SELECT band_name, info_text FROM info WHERE band_name=band_name"
 	return db.session.execute(text(sql)).fetchone()
