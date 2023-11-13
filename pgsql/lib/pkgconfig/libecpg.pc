@@ -1,9 +1,0 @@
-Name: libecpg
-Description: PostgreSQL libecpg library
-Url: http://www.postgresql.org/
-Version: 12.15
-Requires: 
-Requires.private: libpq libpgtypes
-Cflags: -I/home/sansilla/pgsql/include
-Libs: -L/home/sansilla/pgsql/lib -lecpg
-Libs.private:  -lpgcommon -lpgport -lm

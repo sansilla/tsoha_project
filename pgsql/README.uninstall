@@ -1,9 +1,0 @@
-
-1) If you want to save your database contents, move /home/sansilla/pgsql/data
-   out of /home/sansilla/pgsql.
-2) Delete entire /home/sansilla/pgsql.
-3) Remove lines mentioning pgsql with LD_LIBRARY_PATH, PATH, PGHOST and
-   PGDATA at or near the end of your /home/sansilla/.bashrc 
-   (or where ever you have added them manually)
-
-
