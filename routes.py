@@ -20,6 +20,6 @@ def login():
 	if request.method == "GET":
 		return render_template("login.html")
 
-
-	username = request.form["username"]
-	password = request.form["password"]
+	if request.method == "POST":
+		username = request.form["username"]
+		password = request.form["password"]
