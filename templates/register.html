@@ -1,0 +1,17 @@
+<h2>Rekisteröi uusi käyttäjä</h2>
+
+<form action="/register" method="post">
+Käyttäjänimi: <input type="text" name="username">
+<p>
+Salasana: <input type="password" name="password1">
+<p>
+Kirjoita salasana uudelleen: <input type="password" name="password2">
+<p>
+Rooli sovelluksessa:<p>
+<input type="radio" id=1 name="role" value="normal_user">
+<label for=1>Fiilistelijä</label><br>
+<input type="radio" id=2 name="role" value="god">
+<label for=2>Ylläpitäjä</label><br>
+<p>
+<input type="submit" value="Rekisteröi">
+</form>

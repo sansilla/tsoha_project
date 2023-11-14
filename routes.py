@@ -28,6 +28,8 @@ def register():
 		#if password1 != password2:
 			#return render_template(??)
 			# TÄMÄ LOPPUUN
+	role = request.form["role"]
+	return redirect("/")
 
 @app.route("/login", methods=["get", "post"])
 def login():
