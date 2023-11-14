@@ -12,8 +12,22 @@ def index():
 
 @app.route("/band_info/<string:band_name>")
 def show_info(band_name):
-	#info = bands.show_band_info(band_id)
 	return render_template("band.html", info=bands.show_band_info(band_name))
+
+@app.route("/register", methods=["get", "post"])
+def register():
+	if request.method == "GET":
+		return render_template("register.html")
+
+	if request.method == "POST":
+		name = request.form["username"]
+		# TÄHÄN VÄLIIN VAATIMUKSIA NIMIMERKISTÄ??
+		password1 = request.form["password1"]
+		password2 = request.form["password2"]
+
+		#if password1 != password2:
+			#return render_template(??)
+			# TÄMÄ LOPPUUN
 
 @app.route("/login", methods=["get", "post"])
 def login():
@@ -21,5 +35,11 @@ def login():
 		return render_template("login.html")
 
 	if request.method == "POST":
-		username = request.form["username"]
+		name = request.form["username"]
 		password = request.form["password"]
+
+	#if not users.login(name, password):
+		#return render_template(???) VIELÄ KESKEN
+
+	return redirect("/")
+
