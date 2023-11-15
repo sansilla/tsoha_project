@@ -3,6 +3,7 @@ from sqlalchemy.sql import text
 from flask import redirect, render_template, request, session
 from database import db
 import bands
+import users
 
 @app.route("/")
 def index():
@@ -25,11 +26,15 @@ def register():
 		password1 = request.form["password1"]
 		password2 = request.form["password2"]
 
-		#if password1 != password2:
-			#return render_template(??)
-			# TÄMÄ LOPPUUN
-	role = request.form["role"]
-	return redirect("/")
+		if password1 != password2:
+			return render_template("error.html", message="Salasanat ovat erit")
+		if password1 == "":
+			return render_template("error.html", message="Salasana ei voi olla tyhjä")
+
+		role = request.form["role"]
+		if not users.register(name, password1, role):
+			return render_template("error.html", message="Rekisteröinti ei onnistunut")
+		return redirect("/")
 
 @app.route("/login", methods=["get", "post"])
 def login():
