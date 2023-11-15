@@ -12,7 +12,7 @@ def register(name, password, role):
 		db.session.execute(sql, {"name":name, "password":hash_value, "role":role})
 		print("apua")
 		db.session.commit()
-		return True
+		#return True
 
 	#except:
 		#return False
@@ -23,9 +23,11 @@ def register(name, password, role):
         	print(f"Error inserting into database: {e}")
         	return False
 
+	return login(name, password)
+
 
 def login(name, password):
-	sql = "SELECT password, id, role FROM users WHERE name=:name"
+	sql = text("SELECT password, id, role FROM users WHERE name=:name")
 	returning = db.session.execute(sql, {"name":name})
 	user = returning.fetchone()
 	if not user:

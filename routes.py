@@ -45,8 +45,8 @@ def login():
 		name = request.form["username"]
 		password = request.form["password"]
 
-	#if not users.login(name, password):
-		#return render_template(???) VIELÄ KESKEN
+		if not users.login(name, password):
+			return render_template("error.html", message="jotain meni väärin")
 
-	return redirect("/")
+		return redirect("/")
 
