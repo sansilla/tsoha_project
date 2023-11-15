@@ -17,3 +17,13 @@ Sovelluksesta löytyy eri bändejä, joista jokaisesta voi lukea tietopaketin. B
 - Etusivulta voi hakea bändiä nimeltä.
 
 - Etusivulle mahdollinen aakoslista bändeistä? Vai bändit suoraan aakkosjärjestykseen? (mietinnässä vielä)
+
+# Käynnistysohjeet #
+
+(Sovelluksessa ei vielä ole riippuvuuksia, sillä muokkausta on vielä tulossa aika paljon)
+
+Sovellusta voi testata käynnistämällä se paikallisesti
+
+1. Kloonaa tämän sovelluksen repositorio koneellesi ja mene juurikansioon
+
+2. 
