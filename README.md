@@ -20,8 +20,6 @@ Sovelluksesta löytyy eri bändejä, joista jokaisesta voi lukea tietopaketin. B
 
 # Käynnistysohjeet #
 
-(Sovelluksessa ei vielä ole riippuvuuksia, sillä muokkausta on vielä tulossa aika paljon)
-
 Sovellusta voi testata käynnistämällä se paikallisesti
 
 1. Kloonaa tämän sovelluksen repositorio koneellesi ja mene juurikansioon
@@ -38,7 +36,7 @@ Sovellusta voi testata käynnistämällä se paikallisesti
 
 - source venv/bin/activate
 
-# requirements luo eka!!!!
+- pip install -r ./requirements.txt
 
 4. Määritä tietokannan taulukot komennolla:
 
@@ -48,3 +46,6 @@ Sovellusta voi testata käynnistämällä se paikallisesti
 
 - flask run
 
+# Huomioitavaa: #
+
+- Sovellus toimii itselläni suht hyvin, ja tietokannoissa olevat taulukot ja niiden tiedot näkyvät sovelluksessa halutulla tavalla. En kuitenkaan tiedä, kuinka hyvin sovellus muilla toimii.
