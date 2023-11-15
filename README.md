@@ -26,4 +26,25 @@ Sovellusta voi testata käynnistämällä se paikallisesti
 
 1. Kloonaa tämän sovelluksen repositorio koneellesi ja mene juurikansioon
 
-2. 
+2. Luo .env-tiedosto ja lisää sinne seuraavat kohdat:
+
+- DATABASE_URL=postgresql:///sansilla
+
+- SECRET_KEY=488be107d7e30f0c63d1c95b1b18494a
+
+3. Aktivoi virtuaaliympäristö ja riippuvuudet seuraavilla komennoilla:
+
+- python3 -m venv venv
+
+- source venv/bin/activate
+
+# requirements luo eka!!!!
+
+4. Määritä tietokannan taulukot komennolla:
+
+- psql < tables.sql
+
+5. Saat sovelluksen käynnistettyä komennolla:
+
+- flask run
+
