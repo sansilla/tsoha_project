@@ -6,8 +6,8 @@
 <form action="/reviews" method="post">
 Anna oma arvostelusi:<br>
 <textarea name="comment" rows="3" cols="40"></textarea>
+<input type="hidden" name="band_id" value="{{ band_id }}">
 <p><input type="submit" value="Lähetä!">
-<input type="hidden" name="user_id" value="{{ user_id }}">
 <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
 </form>
 {% endif %}
