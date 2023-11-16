@@ -1,4 +1,11 @@
-Toimiiko
 {{ reviews }}
 <p>
 {{ reviews[0][1] }}
+<p>
+{% if session.user_id %}
+<form action="/reviews" method="post">
+Anna oma arvostelusi:<br>
+<textarea name="comment" rows="3" cols="40"></textarea>
+<p><input type="submit" value="Lähetä!">
+</form>
+{% endif %}

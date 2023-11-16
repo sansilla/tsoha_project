@@ -50,3 +50,6 @@ def logout():
 	del session["user_name"]
 	del session["user_role"]
 
+def must_have_role(role):
+	if role > session.get("user_role", 0):
+		abort(403)

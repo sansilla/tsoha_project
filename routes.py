@@ -22,6 +22,19 @@ def show_reviews(band_name):
 	except Exception as e:
 	        return f"Error: {str(e)}"
 
+@app.route("/reviews", methods=["post"])
+def give_review():
+	users.must_have_role(1)
+	users.check_csrf()
+
+	band_id = request.form["band_id"] #saattaa olla ongelma
+	#user_id = request.form["user_id"] #tässäkin
+	comment = request.form["comment"] #ja tässä
+
+	bands.add_review(band_id, users.user_id(), comment)
+
+	return True #ehkä jotain muutakin pitää palauttaa?
+
 
 @app.route("/register", methods=["get", "post"])
 def register():
