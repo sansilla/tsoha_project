@@ -24,16 +24,19 @@ def show_reviews(band_name):
 
 @app.route("/reviews", methods=["post"])
 def give_review():
+	if 'csrf_token' not in session or 'csrf_token' not in request.form:
+		return "CSRF Token missing"
+	if session["csrf_token"] != request.form["csrf_token"]:
+        	return "CSRF Error"
 	users.must_have_role(1)
 	users.check_csrf()
 
-	band_id = request.form["band_id"] #saattaa olla ongelma
-	#user_id = request.form["user_id"] #tässäkin
-	comment = request.form["comment"] #ja tässä
+	band_id = request.form["band_id"]
+	comment = request.form["comment"]
 
 	bands.add_review(band_id, users.user_id(), comment)
 
-	return True #ehkä jotain muutakin pitää palauttaa?
+	return redirect("/") #nyt palauttaa etisuvulle
 
 
 @app.route("/register", methods=["get", "post"])

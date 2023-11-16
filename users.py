@@ -8,9 +8,7 @@ def register(name, password, role):
 	hash_value = generate_password_hash(password)
 	try:
 		sql = text("INSERT INTO users (name, password, role) VALUES (:name, :password, :role)")
-		print(sql)
 		db.session.execute(sql, {"name":name, "password":hash_value, "role":role})
-		print("apua")
 		db.session.commit()
 		#return True
 
@@ -35,7 +33,7 @@ def login(name, password):
 	session["user_id"] = user[1]
 	session["user_name"] = name
 	session["user_role"] = user[2]
-	session["csfr_token"] = os.urandom(16).hex()
+	session["csrf_token"] = os.urandom(16).hex()
 	return True
 
 def user_id():
