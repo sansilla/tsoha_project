@@ -22,7 +22,8 @@ def register():
 
 	if request.method == "POST":
 		name = request.form["username"]
-		# TÄHÄN VÄLIIN VAATIMUKSIA NIMIMERKISTÄ??
+		if len(name) < 3 or len(name) > 15:
+			return render_template("error.html", message="Käyttäjänimen tulee olla 3-15 merkkiä pitkä")
 		password1 = request.form["password1"]
 		password2 = request.form["password2"]
 
@@ -33,7 +34,7 @@ def register():
 
 		role = request.form["role"]
 		if not users.register(name, password1, role):
-			return render_template("error.html", message="Rekisteröinti ei onnistunut")
+			return render_template("error.html", message="Rekisteröinti ei onnistunut :(")
 		return redirect("/")
 
 @app.route("/login", methods=["get", "post"])
