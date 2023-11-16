@@ -32,6 +32,7 @@ def give_review():
 	users.check_csrf()
 
 	band_id = request.form["band_id"]
+	#band_name = request.form["band_name"]
 	comment = request.form["comment"]
 
 	bands.add_review(band_id, users.user_id(), comment)

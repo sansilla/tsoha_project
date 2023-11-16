@@ -15,7 +15,8 @@ def show_reviews(band_name):
 	return db.session.execute(text(sql), {"band_name": band_name}).fetchall()
 
 def add_review(band_id, user_id, comment):
-	sql = "INSERT INTO reviews (band_id, user_id, comment) VALUES (:band_id, :user_id, :comment)"
+	sql = "INSERT INTO reviews (band_id, user_id, comment) VALUES ((SELECT id FROM bands WHERE name=:band_name), :user_id, :comment"
+	#sql = "INSERT INTO reviews (band_id, user_id, comment) VALUES (:band_id, :user_id, :comment)"
 	db.session.execute(text(sql), {"band_id":band_id, "user_id":user_id, "comment":comment})
 	db.session.commit()
 	return True
