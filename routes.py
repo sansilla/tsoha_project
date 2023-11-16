@@ -42,7 +42,7 @@ def login():
 		return render_template("login.html")
 
 	if request.method == "POST":
-		name = request.form["username"]
+		name = request.form["name"]
 		password = request.form["password"]
 
 		if not users.login(name, password):
