@@ -17,8 +17,6 @@ def register(name, password, role):
 	#except:
 		#return False
 
-	#return login(name, password)
-
 	except Exception as e:
         	print(f"Error inserting into database: {e}")
         	return False
@@ -46,4 +44,9 @@ def user_id():
 def check_csrf():
 	if session["csrf_token"] != request.form["csrf_token"]:
 		abort(403)
+
+def logout():
+	del session["user_id"]
+	del session["user_name"]
+	del session["user_role"]
 

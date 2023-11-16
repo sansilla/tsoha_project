@@ -50,3 +50,8 @@ def login():
 
 		return redirect("/")
 
+@app.route("/logout")
+def logout():
+	users.logout()
+	return redirect("/")
+
