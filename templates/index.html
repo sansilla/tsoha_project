@@ -11,6 +11,6 @@ Kirjautuneena sisään käyttäjällä <b>{{ session.user_name }}</b> / <a href=
 {% for band in bands %}
 {{ band.name }} <br>
 <a href="/band_info/{{ band.name }}">Näytä info</a> /
-<a href="/reviews/{{ band.id }}">Arvostelut</a> <br>
+<a href="/reviews/{{ band.name }}">Arvostelut</a> <br>
 <hr>
 {% endfor %}

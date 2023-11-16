@@ -15,6 +15,14 @@ def index():
 def show_info(band_name):
 	return render_template("band.html", info=bands.show_band_info(band_name))
 
+@app.route("/reviews/<string:band_name>")
+def show_reviews(band_name):
+	try:
+		return render_template("reviews.html", reviews=bands.show_reviews(band_name))
+	except Exception as e:
+	        return f"Error: {str(e)}"
+
+
 @app.route("/register", methods=["get", "post"])
 def register():
 	if request.method == "GET":
