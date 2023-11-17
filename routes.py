@@ -18,27 +18,35 @@ def show_info(band_name):
 @app.route("/reviews/<string:band_name>")
 def show_reviews(band_name):
 	try:
-		return render_template("reviews.html", reviews=bands.show_reviews(band_name))
+		#band_id = bands.get_band_id(band_name)
+		#if band_id is not None:
+		return render_template("reviews.html", reviews=bands.show_reviews(band_name)) #, band_id=band_id)
+		#else:
+			#return "Band not found"
 	except Exception as e:
 	        return f"Error: {str(e)}"
 
-@app.route("/reviews", methods=["post"])
-def give_review():
-	if 'csrf_token' not in session or 'csrf_token' not in request.form:
-		return "CSRF Token missing"
-	if session["csrf_token"] != request.form["csrf_token"]:
-        	return "CSRF Error"
-	users.must_have_role(1)
-	users.check_csrf()
+@app.route("/reviews/<string:band_name>", methods=["post"])
+def give_review(band_name):
+	try:
+		if 'csrf_token' not in session or 'csrf_token' not in request.form:
+			return "CSRF Token missing"
+		if session["csrf_token"] != request.form["csrf_token"]:
+        		return "CSRF Error"
+		users.must_have_role(1)
+		users.check_csrf()
 
-	band_id = request.form["band_id"]
-	#band_name = request.form["band_name"]
-	comment = request.form["comment"]
+		#band_name = request.form["band_name"]
+		band_id = bands.get_band_id(band_name)
+		comment = request.form["comment"]
 
-	bands.add_review(band_id, users.user_id(), comment)
-
-	return redirect("/") #nyt palauttaa etisuvulle
-
+		bands.add_review(band_id, users.user_id(), comment)
+		print("toimiiko")
+	#return True
+		return redirect(f"/reviews/{band_name}") #("/reviews/<string:band_name")
+		#return redirect(url_for("show_reviews", band_name=band_name))
+	except Exception as e:
+		return f"Error: {str(e)} :("
 
 @app.route("/register", methods=["get", "post"])
 def register():
