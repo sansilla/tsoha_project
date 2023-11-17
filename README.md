@@ -57,3 +57,5 @@ Sovellusta voi testata käynnistämällä se paikallisesti
 - Ylläpitäjänn roolille ei vielä ole luotu erityisiä oikeuksia, ts. toimii samoin kuin normikäyttäjä.
 
 - Suosikkilista-asia puuttuu vielä täysin.
+
+- Testausta on yritetty erään toisen kurssilaisen kanssa. Hänellä ei näkynyt luomani tietokannat tai niiden sisältö, mutta muu toiminnallisuus näkyi ja toimi. En tiedä, olenko määritellyt tietokannan paikallisen osoitteen oikein.
