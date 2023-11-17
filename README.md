@@ -32,11 +32,11 @@ Sovellusta voi testata käynnistämällä se paikallisesti
 
 3. Aktivoi virtuaaliympäristö ja riippuvuudet seuraavilla komennoilla:
 
+- pip install -r ./requirements.txt
+
 - python3 -m venv venv
 
 - source venv/bin/activate
-
-- pip install -r ./requirements.txt
 
 4. Määritä tietokannan taulukot komennolla:
 
@@ -46,6 +46,14 @@ Sovellusta voi testata käynnistämällä se paikallisesti
 
 - flask run
 
-# Huomioitavaa: #
+# Nykytilanne & testaus: #
 
-- Sovellus toimii itselläni suht hyvin, ja tietokannoissa olevat taulukot ja niiden tiedot näkyvät sovelluksessa halutulla tavalla. En kuitenkaan tiedä, kuinka hyvin sovellus muilla toimii.
+- Halutuilta osin sovellus toimii itselläni suht hyvin, ja tietokannoissa olevat taulukot ja niiden tiedot näkyvät sovelluksessa halutulla tavalla. En kuitenkaan tiedä, kuinka hyvin sovellus muilla toimii.
+
+- Sovellukseen voi tällä hetkellä luoda uuden käyttäjän sekä kirjautua jo olemassa olevalla käyttäjällä.
+
+- Kaikki kävijät voivat nähdä bändien nimetja infopaketit, sekä kirjatut arvostelut. Sisäänkirjautuneena voi kirjoittaa uuden arvostelun. Arvostelut näkyy vähän hassusti, eikä sovelluksessa vielä näy, kuka arvostelun on kirjoittanut.
+
+- Ylläpitäjänn roolille ei vielä ole luotu erityisiä oikeuksia, ts. toimii samoin kuin normikäyttäjä.
+
+- Suosikkilista-asia puuttuu vielä täysin.
