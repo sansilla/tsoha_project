@@ -1,6 +1,7 @@
-{{ reviews }}
+{% for r in reviews %}
+{{ r[0] }}: {{ r[1] }}
 <p>
-{{ reviews[0][1] }}
+{% endfor %}
 <p>
 {% if session.user_id %}
 <form action="" method="post">

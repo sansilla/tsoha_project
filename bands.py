@@ -15,7 +15,10 @@ def show_band_info(band_name):
 	return db.session.execute(text(sql), {"band_name": band_name}).fetchone()
 
 def show_reviews(band_name):
-	sql = "SELECT bands.name,reviews.user_id, reviews.comment FROM bands JOIN reviews ON bands.id=reviews.band_id WHERE bands.name=:band_name"
+	#sql = "SELECT bands.name, reviews.user_id, reviews.comment FROM bands JOIN reviews ON bands.id=reviews.band_id WHERE bands.name=:band_name"
+
+	sql = "SELECT users.name AS user_name, reviews.comment FROM bands JOIN reviews ON bands.id=reviews.band_id JOIN users ON reviews.user_id=users.id WHERE bands.name=:band_name"
+
 	#sql = "SELECT bands.name, reviews.comment FROM bands, reviews WHERE bands.id=reviews.band_id AND bands.name=:band_name"
 	#band_id = get_band_id(band_name)
 	return db.session.execute(text(sql), {"band_name": band_name}).fetchall()
@@ -26,4 +29,3 @@ def add_review(band_id, user_id, comment):
 	db.session.execute(text(sql), {"band_id":band_id, "user_id":user_id, "comment":comment})
 	db.session.commit()
 	return True
-	#VIELÄ KESKEN
