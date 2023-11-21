@@ -7,13 +7,17 @@ import users
 
 @app.route("/")
 def index():
-	#result = db.session.execute(text("SELECT name FROM bands"))
-	#bands = result.fetchall()
 	return render_template("index.html", bands=bands.show_all_bands())
 
 @app.route("/band_info/<string:band_name>")
 def show_info(band_name):
 	return render_template("band.html", info=bands.show_band_info(band_name))
+
+@app.route("/favourites")
+def show_favourites():
+#täällä joku vika, sillä suosikit eivät näy
+	user_id = users.user_id()
+	return render_template("favourites.html", favourites=bands.show_favourites(user_id))
 
 @app.route("/reviews/<string:band_name>")
 def show_reviews(band_name):

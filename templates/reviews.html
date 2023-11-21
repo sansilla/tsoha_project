@@ -1,7 +1,9 @@
 <h2>Bändin {{ reviews[0][2] }} arvostelut:</h2>
+<hr>
 <p>
 {% for r in reviews %}
 {{ r[0] }}: {{ r[1] }}
+<hr>
 <p>
 {% endfor %}
 <p>

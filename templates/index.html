@@ -2,10 +2,13 @@
 
 {% if session.user_id %}
 Kirjautuneena sisään käyttäjällä <b>{{ session.user_name }}</b> / <a href="/logout">Uloskirjautuminen</a>
+<p>
+<a href="/favourites">Näytä omat suosikit</a>
 {% else %}
 <a href="/login">Kirjaudu sisään</a>
 {% endif %}
-
+<p>
+<hr>
 <p>
 
 {% for band in bands %}
