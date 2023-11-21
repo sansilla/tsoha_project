@@ -48,6 +48,12 @@ def give_review(band_name):
 	except Exception as e:
 		return f"Error: {str(e)} :("
 
+#@app.route("/remove", methods=["get", "post"])
+#def remove_review():
+	#users.must_have_role(2)
+	#if request.method == "GET":
+		#r_views = bands.show_reviews(???)
+
 @app.route("/register", methods=["get", "post"])
 def register():
 	if request.method == "GET":
