@@ -13,7 +13,15 @@ Kirjautuneena sisään käyttäjällä <b>{{ session.user_name }}</b> / <a href=
 
 {% for band in bands %}
 {{ band.name }} <br>
+<p>
 <a href="/band_info/{{ band.name }}">Näytä info</a> /
-<a href="/reviews/{{ band.name }}">Arvostelut</a> <br>
+<a href="/reviews/{{ band.name }}">Arvostelut</a>
+<p>
+{% if session.user_id %}
+<form action="/add_to_favourites" method="post">
+<input type="hidden" name="band_name" value="{{ band.name }}">
+<button type="submit">Lisää suosikkeihin</button>
+</form>
+{% endif %}
 <hr>
 {% endfor %}

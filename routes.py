@@ -13,10 +13,20 @@ def index():
 def show_info(band_name):
 	return render_template("band.html", info=bands.show_band_info(band_name))
 
+@app.route("/add_to_favourites", methods=["POST"])
+def add_to_favourites():
+	user_id = session["user_id"]
+	band_name = request.form.get("band_name")
+	band_id = bands.get_band_id(band_name)
+
+	bands.add_to_favourites(user_id, band_id)
+
+	return redirect(request.referrer)
+
 @app.route("/favourites")
 def show_favourites():
-#täällä joku vika, sillä suosikit eivät näy
-	user_id = users.user_id()
+	user_id = session["user_id"]
+	#user_id = users.user_id()
 	return render_template("favourites.html", favourites=bands.show_favourites(user_id))
 
 @app.route("/reviews/<string:band_name>")
