@@ -24,7 +24,6 @@ def add_to_favourites(user_id, band_id):
 		db.session.commit()
 
 def show_favourites(user_id):
-#täällä joku vika, sillä suosikit eivät näy
 	sql = "SELECT bands.name FROM bands JOIN favourites ON bands.id=favourites.band_id WHERE favourites.user_id=:user_id"
 	return db.session.execute(text(sql), {"user_id": user_id}).fetchall()
 
