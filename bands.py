@@ -47,3 +47,13 @@ def remove_review(band_id, user_id):
 	db.session.execute(sql, {"band_id":band_id, "user_id":user_id})
 	db.session.commit()
 	#tämä on vasta luonnostelua
+
+def add_band(band_name):
+	sql = "INSERT INTO bands (name) VALUES (:band_name)"
+	db.session.execute(text(sql), {"band_name": band_name})
+	db.session.commit()
+
+def add_info(band_name, info_text):
+	sql = "INSERT INTO info (band_name, info_text) VALUES (:band_name, :info_text)"
+	db.session.execute(text(sql), {"band_name": band_name, "info_text": info_text})
+	db.session.commit()

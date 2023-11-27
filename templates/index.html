@@ -14,8 +14,8 @@ Kirjautuneena sisään käyttäjällä <b>{{ session.user_name }}</b> / <a href=
 {% for band in bands %}
 {{ band.name }} <br>
 <p>
-<a href="/band_info/{{ band.name }}">Näytä info</a> /
-<a href="/reviews/{{ band.name }}">Arvostelut</a>
+    <a href="/band_info/{{ band.name }}">Näytä info</a> /
+    <a href="/reviews/{{ band.name }}">Arvostelut</a>
 <p>
 {% if session.user_id %}
 <form action="/add_to_favourites" method="post">
@@ -25,3 +25,9 @@ Kirjautuneena sisään käyttäjällä <b>{{ session.user_name }}</b> / <a href=
 {% endif %}
 <hr>
 {% endfor %}
+
+{% if session.user_role == 2 %}
+<p>
+    <a href="/add_band">Lisää bändi</a>
+</p>
+{% endif %}

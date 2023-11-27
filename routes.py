@@ -68,6 +68,19 @@ def give_review(band_name):
 	#if request.method == "GET":
 		#r_views = bands.show_reviews(???)
 
+@app.route("/add_band", methods=["post"])
+def add_band():
+	users.must_have_role(2)
+	users.check_csrf()
+
+	band_name = request.form["band_name"]
+	info_text = request.form["info_text"]
+
+	bands.add_band(band_name) 
+	bands.add_info(band_name, info_text)
+
+	return redirect("/")
+
 @app.route("/register", methods=["get", "post"])
 def register():
 	if request.method == "GET":

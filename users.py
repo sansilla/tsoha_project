@@ -16,8 +16,8 @@ def register(name, password, role):
 		#return False
 
 	except Exception as e:
-        	print(f"Error inserting into database: {e}")
-        	return False
+		print(f"Error inserting into database: {e}")
+		return False
 
 	return login(name, password)
 
