@@ -34,7 +34,7 @@ def show_reviews(band_name):
 	try:
 		#band_id = bands.get_band_id(band_name)
 		#if band_id is not None:
-		return render_template("reviews.html", reviews=bands.show_reviews(band_name)) #, band_id=band_id)
+		return render_template("reviews.html", reviews=bands.show_reviews(band_name), band_name=band_name)
 		#else:
 			#return "Band not found"
 	except Exception as e:
@@ -50,7 +50,7 @@ def give_review(band_name):
 		users.must_have_role(1)
 		users.check_csrf()
 
-		#band_name = request.form["band_name"]
+		band_name = request.form["band_name"]
 		band_id = bands.get_band_id(band_name)
 		comment = request.form["comment"]
 
@@ -68,18 +68,22 @@ def give_review(band_name):
 	#if request.method == "GET":
 		#r_views = bands.show_reviews(???)
 
-@app.route("/add_band", methods=["post"])
+@app.route("/add_band", methods=["get", "post"])
 def add_band():
-	users.must_have_role(2)
-	users.check_csrf()
+	if request.method == "GET":
+		return render_template("add_band.html")
 
-	band_name = request.form["band_name"]
-	info_text = request.form["info_text"]
+	if request.method == "POST":
+		users.must_have_role(2)
+		users.check_csrf()
 
-	bands.add_band(band_name) 
-	bands.add_info(band_name, info_text)
+		band_name = request.form["band_name"]
+		info_text = request.form["info_text"]
 
-	return redirect("/")
+		bands.add_band(band_name) 
+		bands.add_info(band_name, info_text)
+
+		return redirect("/")
 
 @app.route("/register", methods=["get", "post"])
 def register():
