@@ -19,9 +19,16 @@ def add_to_favourites(user_id, band_id):
 	if already_in_list:
 		pass
 	else:
+		print(f"Adding to favourites: user_id={user_id}, band_id={band_id}")
 		sql = "INSERT INTO favourites (user_id, band_id) VALUES (:user_id, :band_id)"
 		db.session.execute(text(sql), {"user_id":user_id, "band_id":band_id})
 		db.session.commit()
+
+def delete_from_favourites(user_id, band_id):
+	print(f"Deleting from favourites: user_id={user_id}, band_id={band_id}")
+	sql = "DELETE FROM favourites WHERE user_id=:user_id AND band_id=:band_id"
+	db.session.execute(text(sql), {"user_id":user_id, "band_id":band_id})
+	db.session.commit()
 
 def show_favourites(user_id):
 	sql = "SELECT bands.name FROM bands JOIN favourites ON bands.id=favourites.band_id WHERE favourites.user_id=:user_id"

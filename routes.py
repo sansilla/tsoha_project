@@ -23,6 +23,17 @@ def add_to_favourites():
 
 	return redirect(request.referrer)
 
+@app.route("/delete_from_favourites", methods=["POST"])
+def delete_fom_favourites():
+	user_id = session["user_id"]
+	band_name = request.form.get("band_name")
+	band_id = bands.get_band_id(band_name)
+	#band_id = request.form.get("band_id")
+
+	bands.delete_from_favourites(user_id, band_id)
+
+	return redirect(request.referrer)
+
 @app.route("/favourites")
 def show_favourites():
 	user_id = session["user_id"]
@@ -47,6 +58,7 @@ def give_review(band_name):
 			return "CSRF Token missing"
 		if session["csrf_token"] != request.form["csrf_token"]:
         		return "CSRF Error"
+		
 		users.must_have_role(1)
 		users.check_csrf()
 
