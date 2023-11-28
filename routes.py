@@ -50,7 +50,7 @@ def give_review(band_name):
 		users.must_have_role(1)
 		users.check_csrf()
 
-		band_name = request.form["band_name"]
+		#band_name = request.form["band_name"]
 		band_id = bands.get_band_id(band_name)
 		comment = request.form["comment"]
 
