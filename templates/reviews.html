@@ -3,6 +3,11 @@
 <p>
 {% for r in reviews %}
 <b>{{ r[0] }}:</b> {{ r[1] }}
+<form action="/remove_review" method="post">
+    <input type="hidden" name="comment" value="{{ r[1] }}">
+    <input type="hidden" name="user_name" value="{{ r[0] }}">
+    <button type="submit">Poista kommentti</button>
+</form>
 <hr>
 <p>
 {% endfor %}

@@ -24,7 +24,7 @@ def add_to_favourites():
 	return redirect(request.referrer)
 
 @app.route("/delete_from_favourites", methods=["POST"])
-def delete_fom_favourites():
+def delete_from_favourites():
 	user_id = session["user_id"]
 	band_name = request.form.get("band_name")
 	band_id = bands.get_band_id(band_name)
@@ -74,11 +74,16 @@ def give_review(band_name):
 	except Exception as e:
 		return f"Error: {str(e)} :("
 
-#@app.route("/remove", methods=["get", "post"])
-#def remove_review():
-	#users.must_have_role(2)
-	#if request.method == "GET":
-		#r_views = bands.show_reviews(???)
+@app.route("/remove_review", methods=["POST"])
+def remove_review_route():
+	users.must_have_role(2)
+	comment = request.form.get("comment")
+	#band_id = bands.get_band_id(band_name)
+	user_name = request.form.get("user_name")
+
+	bands.remove_review(comment, user_name)
+
+	return redirect(request.referrer)
 
 @app.route("/add_band", methods=["get", "post"])
 def add_band():
@@ -106,6 +111,9 @@ def register():
 		name = request.form["username"]
 		if len(name) < 3 or len(name) > 15:
 			return render_template("error.html", message="Käyttäjänimen tulee olla 3-15 merkkiä pitkä")
+		#if users.already_exist:
+			#return render_template("error.html", message="Käyttäjänimi on jo käytössä")
+
 		password1 = request.form["password1"]
 		password2 = request.form["password2"]
 
@@ -113,6 +121,8 @@ def register():
 			return render_template("error.html", message="Salasanat ovat erit")
 		if password1 == "":
 			return render_template("error.html", message="Salasana ei voi olla tyhjä")
+		if len(password1) < 5 or len(password1) > 20:
+			return render_template("error.html", message="Salananan tulee olla 5-20 merkkiä pitkä")
 
 		role = request.form["role"]
 		if not users.register(name, password1, role):

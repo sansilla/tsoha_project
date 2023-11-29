@@ -49,9 +49,11 @@ def add_review(band_id, user_id, comment):
 	db.session.commit()
 	return True
 
-def remove_review(band_id, user_id):
-	sql = "UPDATE reviews SET visible=0 WHERE band_id=:band_id AND user_id=:user_id"
-	db.session.execute(sql, {"band_id":band_id, "user_id":user_id})
+def remove_review(comment, user_name):
+	print(f"Deleting from reviews: comment={comment}, user_name={user_name}")
+	sql = "DELETE FROM reviews WHERE comment=:comment AND user_id=(SELECT id from users WHERE name=:user_name)"
+	#sql = "DELETE FROM reviews WHERE comment=:comment AND user_id=:user_id"
+	db.session.execute(text(sql), {"comment":comment, "user_name":user_name})
 	db.session.commit()
 	#tämä on vasta luonnostelua
 

@@ -1,5 +1,5 @@
 import os
-from flask import request, session, abort
+from flask import request, session, abort,render_template
 from database import db
 from werkzeug.security import check_password_hash, generate_password_hash
 from sqlalchemy import text
