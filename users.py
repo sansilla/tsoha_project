@@ -5,6 +5,11 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from sqlalchemy import text
 
 def register(name, password, role):
+	existing_user = db.session.execute(text("SELECT * FROM users WHERE name = :name"), {"name": name}).fetchone()
+	if existing_user:
+		print("Käyttäjänimi on jo käytössä.")
+		return "username_exists"
+
 	hash_value = generate_password_hash(password)
 	try:
 		sql = text("INSERT INTO users (name, password, role) VALUES (:name, :password, :role)")

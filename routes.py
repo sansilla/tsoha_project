@@ -28,7 +28,6 @@ def delete_from_favourites():
 	user_id = session["user_id"]
 	band_name = request.form.get("band_name")
 	band_id = bands.get_band_id(band_name)
-	#band_id = request.form.get("band_id")
 
 	bands.delete_from_favourites(user_id, band_id)
 
@@ -37,17 +36,13 @@ def delete_from_favourites():
 @app.route("/favourites")
 def show_favourites():
 	user_id = session["user_id"]
-	#user_id = users.user_id()
 	return render_template("favourites.html", favourites=bands.show_favourites(user_id))
 
 @app.route("/reviews/<string:band_name>")
 def show_reviews(band_name):
 	try:
-		#band_id = bands.get_band_id(band_name)
-		#if band_id is not None:
 		return render_template("reviews.html", reviews=bands.show_reviews(band_name), band_name=band_name)
-		#else:
-			#return "Band not found"
+
 	except Exception as e:
 	        return f"Error: {str(e)}"
 
@@ -57,20 +52,19 @@ def give_review(band_name):
 		if 'csrf_token' not in session or 'csrf_token' not in request.form:
 			return "CSRF Token missing"
 		if session["csrf_token"] != request.form["csrf_token"]:
-        		return "CSRF Error"
-		
+			return "CSRF Error"
+				
 		users.must_have_role(1)
 		users.check_csrf()
 
-		#band_name = request.form["band_name"]
 		band_id = bands.get_band_id(band_name)
 		comment = request.form["comment"]
 
 		bands.add_review(band_id, users.user_id(), comment)
 		print("toimiiko")
-	#return True
-		return redirect(f"/reviews/{band_name}") #("/reviews/<string:band_name")
-		#return redirect(url_for("show_reviews", band_name=band_name))
+
+		return redirect(f"/reviews/{band_name}")
+
 	except Exception as e:
 		return f"Error: {str(e)} :("
 
@@ -78,7 +72,6 @@ def give_review(band_name):
 def remove_review_route():
 	users.must_have_role(2)
 	comment = request.form.get("comment")
-	#band_id = bands.get_band_id(band_name)
 	user_name = request.form.get("user_name")
 
 	bands.remove_review(comment, user_name)
@@ -111,8 +104,6 @@ def register():
 		name = request.form["username"]
 		if len(name) < 3 or len(name) > 15:
 			return render_template("error.html", message="Käyttäjänimen tulee olla 3-15 merkkiä pitkä")
-		#if users.already_exist:
-			#return render_template("error.html", message="Käyttäjänimi on jo käytössä")
 
 		password1 = request.form["password1"]
 		password2 = request.form["password2"]
@@ -125,8 +116,15 @@ def register():
 			return render_template("error.html", message="Salananan tulee olla 5-20 merkkiä pitkä")
 
 		role = request.form["role"]
-		if not users.register(name, password1, role):
-			return render_template("error.html", message="Rekisteröinti ei onnistunut :(")
+		reg_result = users.register(name, password1, role)
+		if not reg_result:
+			return render_template("error.html", message="Rekisteröinti ei onnistunut :()")
+		elif reg_result == "username_exists":
+			return render_template("error.html", message="Käyttäjänimi on jo käytössä")
+
+		#role = request.form["role"]
+		#if not users.register(name, password1, role):
+			#return render_template("error.html", message="Rekisteröinti ei onnistunut :(")
 		return redirect("/")
 
 @app.route("/login", methods=["get", "post"])
