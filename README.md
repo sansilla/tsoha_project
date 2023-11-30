@@ -12,11 +12,11 @@ Sovelluksesta löytyy eri bändejä, joista jokaisesta voi lukea tietopaketin. B
 
 - Käyttäjä voi joko lisätä tai poistaa bändin suosikkilistalta.
 
-- Ylläpitäjä voi poistaa tai lisätä bändin (ja samalla tietopaketin), sekä poistaa yksittäisen käyttäjän arvostelun.
+- Ylläpitäjä voi 	~~poistaa tai~~ lisätä bändin (ja samalla tietopaketin), sekä poistaa yksittäisen käyttäjän arvostelun.
 
-- Etusivulta voi hakea bändiä nimeltä.
+- ~~Etusivulta voi hakea bändiä nimeltä.~~
 
-- Etusivulle mahdollinen aakoslista bändeistä? Vai bändit suoraan aakkosjärjestykseen? (mietinnässä vielä)
+- Etusivulle bändit näkyvillä aakkosjärjestyksessä.
 
 # Käynnistysohjeet #
 
