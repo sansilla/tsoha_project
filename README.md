@@ -51,3 +51,5 @@ Sovellusta voi testata käynnistämällä se paikallisesti
 - Sovelluksen kaikki listatut toiminnot toimivat.
 
 - "Uuden ihmisen" testatessa (eli avatessa sovellusta ensimmäistä kertaa) ei etusivulla vielä ole bändejä, mutta oletettavasti ylläpitäjän luotua niitä voi lisätä. Luultavasti tulen lisäämään pari sql-komentoa, jotka täyttää tietokantaan valmiiksi jotain tietoa.
+
+- Koodi on vielä hieman siistimistä vailla.
