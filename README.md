@@ -16,7 +16,7 @@ Sovelluksesta löytyy eri bändejä, joista jokaisesta voi lukea tietopaketin. B
 
 - ~~Etusivulta voi hakea bändiä nimeltä.~~
 
-- Etusivulle bändit näkyvillä aakkosjärjestyksessä.
+- Etusivulla bändit näkyvillä aakkosjärjestyksessä.
 
 # Käynnistysohjeet #
 
@@ -48,16 +48,6 @@ Sovellusta voi testata käynnistämällä se paikallisesti
 
 # Nykytilanne & testaus: #
 
-- Halutuilta osin sovellus toimii itselläni suht hyvin, ja tietokannoissa olevat taulukot ja niiden tiedot näkyvät sovelluksessa halutulla tavalla. En kuitenkaan tiedä, kuinka hyvin sovellus muilla toimii.
+- Sovelluksen kaikki listatut toiminnot toimivat.
 
-- Sovellukseen voi tällä hetkellä luoda uuden käyttäjän sekä kirjautua jo olemassa olevalla käyttäjällä. Myös uloskirjautuminen toimii.
-
-- Kaikki kävijät voivat nähdä bändien nimetja infopaketit, sekä kirjatut arvostelut. Sisäänkirjautuneena voi kirjoittaa uuden arvostelun. Arvostelut näkyy vähän hassusti, eikä sovelluksessa vielä näy, kuka arvostelun on kirjoittanut.
-
-- Ylläpitäjänn roolille ei vielä ole luotu erityisiä oikeuksia, ts. toimii samoin kuin normikäyttäjä.
-
-- Suosikkilista-asia puuttuu vielä täysin.
-
-- Vain yhden bändin (Tiisu) kohdalla näkyy arvostelut ja tekstikenttä niiden kirjoittamiselle (sisäänkirjautuneena), sillä muiden kohdalla en ole saanut vielä hommaa toimimaan.
-
-- Testausta on yritetty erään toisen kurssilaisen kanssa. Hänellä ei näkynyt luomani tietokannat tai niiden sisältö, mutta muu toiminnallisuus näkyi ja toimi. En tiedä, olenko määritellyt tietokannan paikallisen osoitteen oikein.
+- "Uuden ihmisen" testatessa (eli avatessa sovellusta ensimmäistä kertaa) ei etusivulla vielä ole bändejä, mutta oletettavasti ylläpitäjän luotua niitä voi lisätä. Luultavasti tulen lisäämään pari sql-komentoa, jotka täyttää tietokantaan valmiiksi jotain tietoa.
