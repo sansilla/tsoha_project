@@ -1,5 +1,4 @@
 from app import app
-#from sqlalchemy.sql import text
 from flask import redirect, render_template, request, session
 from database import db
 import bands
@@ -66,7 +65,6 @@ def give_review(band_name):
 			return render_template("error.html", message="Arvostelu voi olla max. 200 merkkiä", link=request.referrer, text="Takaisin arvosteluihin")
 
 		bands.add_review(band_id, users.user_id(), comment)
-		print("toimiiko")
 
 		return redirect(f"/reviews/{band_name}")
 

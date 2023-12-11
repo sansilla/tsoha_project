@@ -35,15 +35,10 @@ def show_favourites(user_id):
 	return db.session.execute(text(sql), {"user_id": user_id}).fetchall()
 
 def show_reviews(band_name):
-	#sql = "SELECT bands.name, reviews.user_id, reviews.comment FROM bands JOIN reviews ON bands.id=reviews.band_id WHERE bands.name=:band_name"
-
 	sql = "SELECT users.name AS user_name, reviews.comment, bands.name FROM bands JOIN reviews ON bands.id=reviews.band_id JOIN users ON reviews.user_id=users.id WHERE bands.name=:band_name"
-	#tämän täytyisi saada näyttämään jotain (edes vaikka 0) jos bändistä ei vielä ole arvosteluja
-
 	return db.session.execute(text(sql), {"band_name": band_name}).fetchall()
 
 def add_review(band_id, user_id, comment):
-	#sql = "INSERT INTO reviews (band_id, user_id, comment) VALUES ((SELECT id FROM bands WHERE name=:band_name), :user_id, :comment"
 	sql = "INSERT INTO reviews (band_id, user_id, comment) VALUES (:band_id, :user_id, :comment)"
 	db.session.execute(text(sql), {"band_id":band_id, "user_id":user_id, "comment":comment})
 	db.session.commit()
@@ -52,10 +47,8 @@ def add_review(band_id, user_id, comment):
 def remove_review(comment, user_name):
 	print(f"Deleting from reviews: comment={comment}, user_name={user_name}")
 	sql = "DELETE FROM reviews WHERE comment=:comment AND user_id=(SELECT id from users WHERE name=:user_name)"
-	#sql = "DELETE FROM reviews WHERE comment=:comment AND user_id=:user_id"
 	db.session.execute(text(sql), {"comment":comment, "user_name":user_name})
 	db.session.commit()
-	#tämä on vasta luonnostelua
 
 def add_band(band_name):
 	sql = "INSERT INTO bands (name) VALUES (:band_name)"
