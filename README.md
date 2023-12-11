@@ -6,15 +6,13 @@ Sovelluksesta löytyy eri bändejä, joista jokaisesta voi lukea tietopaketin. B
 
 - Mahdollisuus kirjautua sisään ja ulos sekä luoda uusi käyttäjä.
 
-- Sovelluksen avautuessa käyttäjä näkee listan bändeistä. Bändiä klikkaamalla näytetään tietopaketti bändistä sekä sen saamat arvostelut.
+- Sovelluksen avautuessa käyttäjä näkee listan bändeistä. Bändiä alla olevista painikkeista klikkaamalla näytetään tietopaketti bändistä sekä sen saamat arvostelut.
 
 - Käyttäjä voi myös itse antaa bändistä arvion.
 
 - Käyttäjä voi joko lisätä tai poistaa bändin suosikkilistalta.
 
-- Ylläpitäjä voi 	~~poistaa tai~~ lisätä bändin (ja samalla tietopaketin), sekä poistaa yksittäisen käyttäjän arvostelun.
-
-- ~~Etusivulta voi hakea bändiä nimeltä.~~
+- Ylläpitäjä voi lisätä bändin (ja samalla tietopaketin), sekä poistaa yksittäisen käyttäjän arvostelun.
 
 - Etusivulla bändit näkyvillä aakkosjärjestyksessä.
 
