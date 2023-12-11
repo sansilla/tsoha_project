@@ -1,5 +1,5 @@
 from app import app
-from sqlalchemy.sql import text
+#from sqlalchemy.sql import text
 from flask import redirect, render_template, request, session
 from database import db
 import bands
@@ -126,9 +126,8 @@ def register():
 
 		role = request.form["role"]
 		reg_result = users.register(name, password1, role)
-		if not reg_result:
-			return render_template("error.html", message="Rekisteröinti ei onnistunut :(", link="/register", text="Takaisin rekisteröintiin")
-		elif reg_result == "username_exists":
+
+		if reg_result == "username_exists":
 			return render_template("error.html", message="Käyttäjänimi on jo käytössä", link="/register", text="Takaisin rekisteröintiin")
 
 		return redirect("/")

@@ -1,5 +1,5 @@
 import os
-from flask import request, session, abort,render_template
+from flask import request, session, abort
 from database import db
 from werkzeug.security import check_password_hash, generate_password_hash
 from sqlalchemy import text
@@ -7,7 +7,7 @@ from sqlalchemy import text
 def register(name, password, role):
 	existing_user = db.session.execute(text("SELECT * FROM users WHERE name = :name"), {"name": name}).fetchone()
 	if existing_user:
-		#jos käyttäjänimi on jo käytössä
+		#if username already exists
 		return "username_exists"
 
 	hash_value = generate_password_hash(password)
@@ -15,7 +15,6 @@ def register(name, password, role):
 		sql = text("INSERT INTO users (name, password, role) VALUES (:name, :password, :role)")
 		db.session.execute(sql, {"name":name, "password":hash_value, "role":role})
 		db.session.commit()
-		#return True
 
 	except Exception as e:
 		print(f"Error inserting into database: {e}")
@@ -29,17 +28,17 @@ def login(name, password):
 	returning = db.session.execute(sql, {"name":name})
 	user = returning.fetchone()
 	if not user:
-		#jos käyttäjänimeä ei ole olemassa
+		#if user doesn't exist
 		return "not_exists"
 
 	if not check_password_hash(user[0], password):
-		#väärä salasana
+		#if the password is wrong
 		return "wrong_password"
 	session["user_id"] = user[1]
 	session["user_name"] = name
 	session["user_role"] = user[2]
 	session["csrf_token"] = os.urandom(16).hex()
-	return None #True
+	return None
 
 def user_id():
 	return session.get("user_id", 0)
