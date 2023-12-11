@@ -7,7 +7,7 @@ from sqlalchemy import text
 def register(name, password, role):
 	existing_user = db.session.execute(text("SELECT * FROM users WHERE name = :name"), {"name": name}).fetchone()
 	if existing_user:
-		print("Käyttäjänimi on jo käytössä.")
+		#jos käyttäjänimi on jo käytössä
 		return "username_exists"
 
 	hash_value = generate_password_hash(password)
@@ -16,9 +16,6 @@ def register(name, password, role):
 		db.session.execute(sql, {"name":name, "password":hash_value, "role":role})
 		db.session.commit()
 		#return True
-
-	#except:
-		#return False
 
 	except Exception as e:
 		print(f"Error inserting into database: {e}")
@@ -32,14 +29,17 @@ def login(name, password):
 	returning = db.session.execute(sql, {"name":name})
 	user = returning.fetchone()
 	if not user:
-		return False
+		#jos käyttäjänimeä ei ole olemassa
+		return "not_exists"
+
 	if not check_password_hash(user[0], password):
-		return False
+		#väärä salasana
+		return "wrong_password"
 	session["user_id"] = user[1]
 	session["user_name"] = name
 	session["user_role"] = user[2]
 	session["csrf_token"] = os.urandom(16).hex()
-	return True
+	return None #True
 
 def user_id():
 	return session.get("user_id", 0)

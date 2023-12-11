@@ -59,6 +59,11 @@ def give_review(band_name):
 
 		band_id = bands.get_band_id(band_name)
 		comment = request.form["comment"]
+		if comment == "":
+			return render_template("error.html", message="Arvostelu ei voi olla tyhjä", link=request.referrer, text="Takaisin arvosteluihin")
+
+		if len(comment) > 200:
+			return render_template("error.html", message="Arvostelu voi olla max. 200 merkkiä", link=request.referrer, text="Takaisin arvosteluihin")
 
 		bands.add_review(band_id, users.user_id(), comment)
 		print("toimiiko")
@@ -88,7 +93,11 @@ def add_band():
 		users.check_csrf()
 
 		band_name = request.form["band_name"]
+		if band_name == "":
+			return render_template("error.html", message="nimi ei voi olla tyhjä", link="/add_band", text="Takaisin bändin lisäämiseen")
 		info_text = request.form["info_text"]
+		if info_text == "":
+			return render_template("error.html", message="kirjoita bändille kuvaus", link="/add_band", text="Takaisin bändin lisäämiseen")
 
 		bands.add_band(band_name) 
 		bands.add_info(band_name, info_text)
@@ -103,28 +112,25 @@ def register():
 	if request.method == "POST":
 		name = request.form["username"]
 		if len(name) < 3 or len(name) > 15:
-			return render_template("error.html", message="Käyttäjänimen tulee olla 3-15 merkkiä pitkä")
+			return render_template("error.html", message="Käyttäjänimen tulee olla 3-15 merkkiä pitkä", link="/register", text="Takaisin rekisteröintiin")
 
 		password1 = request.form["password1"]
 		password2 = request.form["password2"]
 
 		if password1 != password2:
-			return render_template("error.html", message="Salasanat ovat erit")
+			return render_template("error.html", message="Salasanat ovat erit", link="/register", text="Takaisin rekisteröintiin")
 		if password1 == "":
-			return render_template("error.html", message="Salasana ei voi olla tyhjä")
+			return render_template("error.html", message="Salasana ei voi olla tyhjä", link="/register", text="Takaisin rekisteröintiin")
 		if len(password1) < 5 or len(password1) > 20:
-			return render_template("error.html", message="Salananan tulee olla 5-20 merkkiä pitkä")
+			return render_template("error.html", message="Salananan tulee olla 5-20 merkkiä pitkä", link="/register", text="Takaisin rekisteröintiin")
 
 		role = request.form["role"]
 		reg_result = users.register(name, password1, role)
 		if not reg_result:
-			return render_template("error.html", message="Rekisteröinti ei onnistunut :()")
+			return render_template("error.html", message="Rekisteröinti ei onnistunut :(", link="/register", text="Takaisin rekisteröintiin")
 		elif reg_result == "username_exists":
-			return render_template("error.html", message="Käyttäjänimi on jo käytössä")
+			return render_template("error.html", message="Käyttäjänimi on jo käytössä", link="/register", text="Takaisin rekisteröintiin")
 
-		#role = request.form["role"]
-		#if not users.register(name, password1, role):
-			#return render_template("error.html", message="Rekisteröinti ei onnistunut :(")
 		return redirect("/")
 
 @app.route("/login", methods=["get", "post"])
@@ -136,8 +142,18 @@ def login():
 		name = request.form["name"]
 		password = request.form["password"]
 
-		if not users.login(name, password):
-			return render_template("error.html", message="jotain meni väärin")
+		if name == "":
+			return render_template("error.html", message="kirjoita käyttäjänimi", link="/login", text="Takaisin sisäänkirjautumiseen")
+		
+		if password == "":
+			return render_template("error.html", message="kirjoita salasana", link="/login", text="Takaisin sisäänkirjautumiseen")
+
+		login_result = users.login(name, password)
+		if login_result == "not_exists":
+			return render_template("error.html", message="käyttäjänimeä ei ole olemassa", link="/login", text="Takaisin sisäänkirjautumiseen")
+		
+		if login_result == "wrong_password":
+			return render_template("error.html", message="väärä salasana", link="/login", text="Takaisin sisäänkirjautumiseen")
 
 		return redirect("/")
 
