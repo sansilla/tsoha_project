@@ -59,10 +59,10 @@ def give_review(band_name):
 		band_id = bands.get_band_id(band_name)
 		comment = request.form["comment"]
 		if comment == "":
-			return render_template("error.html", message="Arvostelu ei voi olla tyhjä", link=request.referrer, text="Takaisin arvosteluihin")
+			return render_template("error.html", message="arvostelu ei voi olla tyhjä", link=request.referrer, text="Takaisin arvosteluihin")
 
 		if len(comment) > 200:
-			return render_template("error.html", message="Arvostelu voi olla max. 200 merkkiä", link=request.referrer, text="Takaisin arvosteluihin")
+			return render_template("error.html", message="arvostelu voi olla max. 200 merkkiä", link=request.referrer, text="Takaisin arvosteluihin")
 
 		bands.add_review(band_id, users.user_id(), comment)
 
@@ -110,23 +110,23 @@ def register():
 	if request.method == "POST":
 		name = request.form["username"]
 		if len(name) < 3 or len(name) > 15:
-			return render_template("error.html", message="Käyttäjänimen tulee olla 3-15 merkkiä pitkä", link="/register", text="Takaisin rekisteröintiin")
+			return render_template("error.html", message="käyttäjänimen tulee olla 3-15 merkkiä pitkä", link="/register", text="Takaisin rekisteröintiin")
 
 		password1 = request.form["password1"]
 		password2 = request.form["password2"]
 
 		if password1 != password2:
-			return render_template("error.html", message="Salasanat ovat erit", link="/register", text="Takaisin rekisteröintiin")
+			return render_template("error.html", message="salasanat ovat erit", link="/register", text="Takaisin rekisteröintiin")
 		if password1 == "":
-			return render_template("error.html", message="Salasana ei voi olla tyhjä", link="/register", text="Takaisin rekisteröintiin")
+			return render_template("error.html", message="salasana ei voi olla tyhjä", link="/register", text="Takaisin rekisteröintiin")
 		if len(password1) < 5 or len(password1) > 20:
-			return render_template("error.html", message="Salananan tulee olla 5-20 merkkiä pitkä", link="/register", text="Takaisin rekisteröintiin")
+			return render_template("error.html", message="salananan tulee olla 5-20 merkkiä pitkä", link="/register", text="Takaisin rekisteröintiin")
 
 		role = request.form["role"]
 		reg_result = users.register(name, password1, role)
 
 		if reg_result == "username_exists":
-			return render_template("error.html", message="Käyttäjänimi on jo käytössä", link="/register", text="Takaisin rekisteröintiin")
+			return render_template("error.html", message="käyttäjänimi on jo käytössä", link="/register", text="Takaisin rekisteröintiin")
 
 		return redirect("/")
 

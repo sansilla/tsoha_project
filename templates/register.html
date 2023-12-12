@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="/static/main.css">
+
 <h2>Rekisteröi uusi käyttäjä</h2>
 
 <form action="/register" method="post" onsubmit="return check(this)">
@@ -8,9 +10,9 @@ Salasana: <input type="password" name="password1">
 Kirjoita salasana uudelleen: <input type="password" name="password2">
 <p>
 Rooli sovelluksessa:<p>
-<input type="radio" id="normal_user" name="role" value=1>
+<input type="radio" id="normal_user" name="role" value=1 required>
 <label for=1>Fiilistelijä</label><br>
-<input type="radio" id="best_user" name="role" value=2>
+<input type="radio" id="best_user" name="role" value=2 required>
 <label for=2>Ylläpitäjä</label><br>
 <p>
 <input type="submit" value="Rekisteröi">
