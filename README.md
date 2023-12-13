@@ -48,8 +48,6 @@ Sovellusta voi testata käynnistämällä se paikallisesti
 
 - Sovelluksen kaikki listatut toiminnot toimivat.
 
-- Sovelluksen ulkoasuun tulossa vielä mahdollisesti muutosta. --> done
+- ~~Sovelluksen ulkoasuun tulossa vielä mahdollisesti muutosta.~~ CSS otettu käyttöön
 
-- "Uuden ihmisen" testatessa (eli avatessa sovellusta ensimmäistä kertaa) ei etusivulla vielä ole bändejä, mutta oletettavasti ylläpitäjän luotua niitä voi lisätä. Luultavasti tulen lisäämään pari sql-komentoa, jotka täyttää tietokantaan valmiiksi jotain tietoa.
-
-- Koodi on vielä hieman siistimistä vailla.
+- "Uuden ihmisen" testatessa (eli avatessa sovellusta ensimmäistä kertaa) taulukoita luodessa tietokantaan lisätään automaattisesti yksi bändi ja infopaketti bändistä parilla erillisellä sql-komennolla.
