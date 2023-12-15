@@ -56,6 +56,6 @@ Sovellusta voi testata käynnistämällä se paikallisesti
 
 - Sovelluksen kaikki listatut toiminnot toimivat.
 
-- CSS otettu käyttöön ja ulkoasia siistitty.
+- CSS otettu käyttöön ja ulkoasua siistitty.
 
 - "Uuden ihmisen" testatessa (eli avatessa sovellusta ensimmäistä kertaa) taulukoita luodessa tietokantaan lisätään automaattisesti yksi bändi ja infopaketti bändistä parilla erillisellä sql-komennolla.
