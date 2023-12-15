@@ -2,14 +2,16 @@
 
 <h2>Sisäänkirjautuminen</h2>
 
-<form action="/login" method="post">
-Käyttäjätunnus: <br><input type="text" name="name">
+<div class="info-container">
+    <form action="/login" method="post">
+        Käyttäjätunnus: <br><input type="text" name="name">
+        <p>
+            Salasana: <br><input type="password" name="password">
+            <p>
+                <input type="submit" value="Kirjaudu sisään">
+            </form>
+            <p>
+                Luo uusi tunnus painamalla <a href="/register">tästä</a>
+</div>
 <p>
-Salasana: <br><input type="password" name="password">
-<p>
-<input type="submit" value="Kirjaudu sisään">
-</form>
-<p>
-Luo uusi tunnus painamalla <a href="/register">tästä</a>
-<p>
-<a href="/">Takaisin etusivulle</a>
+<a href="/" class="button-link">Takaisin etusivulle</a>

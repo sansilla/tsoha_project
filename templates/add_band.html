@@ -1,17 +1,17 @@
 <link rel="stylesheet" href="/static/main.css">
 
 <form action="" method="post">
-Bändin nimi:<br>
-
+<b>Bändin nimi:</b><br>
 <textarea name="band_name" rows="3" cols="40"></textarea>
 <input type="hidden" name="band_name" value="{{ band_name }}"><br>
+<p></p>
 
-Infoteksti:<br>
-<textarea name="info_text" rows="3" cols="40"></textarea>
+<b>Infoteksti:</b><br>
+<textarea name="info_text" rows="6" cols="40"></textarea>
 <input type="hidden" name="info_text" value="{{ info_text }}">
 
 <p><input type="submit" value="Lisää">
 <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
 </form>
 
-<a href="/">Takaisin etusivulle</a>
+<a href="/" class="button-link2">Takaisin etusivulle</a>

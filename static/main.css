@@ -16,7 +16,9 @@ body {
 }
 
 .info-container {
-    background-color: white;
+    background: transparent;
+    backdrop-filter: blur(200px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 2);
     padding: 10px;
     margin: 10px;
     border-radius: 5px;
@@ -29,7 +31,7 @@ body {
 .button-link {
     display: inline-block;
     padding: 10px 10px;
-    margin-left: 15px;
+    margin-left: 10px;
     text-decoration: none;
     color: #fff;
     background-color: #88b0da;
@@ -39,5 +41,33 @@ body {
 
 .button-link:hover {
     background-color: #b87cd4;
+    color: #fff;
+}
+.button-link2 {
+    display: inline-block;
+    padding: 5px 10px;
+    margin-left: none;
+    text-decoration: none;
+    color: #fff;
+    background-color: #88b0da;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.button-link-add {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-left: none;
+    text-decoration: none;
+    color: #fff;
+    background-color: rgb(226, 52, 188);
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.button-link2:hover {
+    background-color: #b87cd4;
+    color: #fff;
+}
+.button-link-add:hover {
+    background-color: #a218e2;
     color: #fff;
 }

@@ -2,21 +2,22 @@
 
 <h2>Rekisteröi uusi käyttäjä</h2>
 
-<form action="/register" method="post" onsubmit="return check(this)">
-Käyttäjänimi: <input type="text" name="username">
+<div class="info-container">
+    <form action="/register" method="post" onsubmit="return check(this)">
+        Käyttäjänimi: <input type="text" name="username">
+        <p>
+            Salasana: <input type="password" name="password1">
+            <p>
+                Kirjoita salasana uudelleen: <input type="password" name="password2">
+                <p>
+                    Rooli sovelluksessa:<p>
+                        <input type="radio" id="normal_user" name="role" value=1 required>
+                        <label for=1>Fiilistelijä</label><br>
+                        <input type="radio" id="best_user" name="role" value=2 required>
+                        <label for=2>Ylläpitäjä</label><br>
+                        <p>
+                            <input type="submit" value="Rekisteröi">
+                        </form>
+</div>
 <p>
-Salasana: <input type="password" name="password1">
-<p>
-Kirjoita salasana uudelleen: <input type="password" name="password2">
-<p>
-Rooli sovelluksessa:<p>
-<input type="radio" id="normal_user" name="role" value=1 required>
-<label for=1>Fiilistelijä</label><br>
-<input type="radio" id="best_user" name="role" value=2 required>
-<label for=2>Ylläpitäjä</label><br>
-<p>
-<input type="submit" value="Rekisteröi">
-</form>
-
-<p>
-<a href="/login">Takaisin edelliselle sivulle</a>
+<a href="/login" class="button-link">Takaisin edelliselle sivulle</a>

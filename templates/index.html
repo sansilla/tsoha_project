@@ -1,23 +1,28 @@
 <link rel="stylesheet" href="/static/main.css">
 
-<h2>Tervetuloa viihtymään!</h2>
+<h1>Tervetuloa viihtymään!</h1>
 
 {% if session.user_id %}
 Kirjautuneena sisään käyttäjällä <b>{{ session.user_name }}</b> / <a href="/logout">Uloskirjautuminen</a>
 <p>
 <a href="/favourites">Näytä omat suosikit</a>
+{% if session.user_role == 2 %}
+<p>
+    <a href="/add_band" class="button-link-add">Lisää bändi</a>
+</p>
+{% endif %}
 {% else %}
-<a href="/login">Kirjaudu sisään</a>
+<a href="/login" class="button-link">Kirjaudu sisään</a>
 {% endif %}
 <p>
 <hr>
 <p>
 
 {% for band in bands %}
-{{ band.name }} <br>
+<h2>{{ band.name }}</h2>
 <p>
-    <a href="/band_info/{{ band.name }}">Näytä info</a> /
-    <a href="/reviews/{{ band.name }}">Arvostelut</a>
+    <a href="/band_info/{{ band.name }}" class="button-link2">Näytä info</a>
+    <a href="/reviews/{{ band.name }}" class="button-link2">Arvostelut</a>
 <p>
 {% if session.user_id %}
 <form action="/add_to_favourites" method="post">
@@ -28,8 +33,4 @@ Kirjautuneena sisään käyttäjällä <b>{{ session.user_name }}</b> / <a href=
 <hr>
 {% endfor %}
 
-{% if session.user_role == 2 %}
-<p>
-    <a href="/add_band">Lisää bändi</a>
-</p>
-{% endif %}
+
