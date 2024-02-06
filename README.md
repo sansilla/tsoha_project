@@ -26,7 +26,7 @@ Sovellusta voi testata käynnistämällä se paikallisesti
 
 - DATABASE_URL=postgresql:///sansilla
 
-- SECRET_KEY=488be107d7e30f0c63d1c95b1b18494a
+- SECRET_KEY=<tänne oma secret key>
 
 3. Aktivoi virtuaaliympäristö ja riippuvuudet seuraavilla komennoilla:
 
